@@ -14,12 +14,17 @@ function Profile({ person }: { person: Person }): JSX.Element {
 }
 
 export default function Gallery(): JSX.Element {
+  const people: Person[] = [
+    { name: "Katsuko Saruhashi", imageId: "YfeOqp2" },
+    { name: "Aklilu Lemma", imageId: "OKS67lh" },
+    { name: "Lin Lanying", imageId: "1bX5QH6" },
+  ];
   return (
     <section>
       <h1>Amazing scientists</h1>
-      <Profile person={{ name: "Katsuko Saruhashi", imageId: "YfeOqp2" }} />
-      <Profile person={{ name: "Aklilu Lemma", imageId: "OKS67lh" }} />
-      <Profile person={{ name: "Lin Lanying", imageId: "1bX5QH6" }} />
+      {people.map((person) => (
+        <Profile key={person.name} person={person} />
+      ))}
     </section>
   );
 }
