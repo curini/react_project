@@ -1,11 +1,14 @@
 import "./App.css";
-import Gallery from "./components/Gallery";
+import { Outlet } from "react-router-dom";
+import Nav from "./components/Nav";
 
 function App() {
   return (
     <>
-      <p className="text-3xl font-bold underline">Hello, World!</p>
-      <Gallery />
+      <Nav />
+      <div className="p-4">
+        <Outlet />
+      </div>
     </>
   );
 }
