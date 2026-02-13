@@ -1,16 +1,18 @@
+import { Link } from "react-router-dom";
+
 export default function Nav() {
   return (
     <nav className="bg-gray-800 text-white p-4">
       <ul className="flex space-x-4">
         <li>
-          <a href="/" className="hover:underline">
+          <Link to="/" className="hover:underline">
             Home
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="/welcome" className="hover:underline">
+          <Link to="/welcome" className="hover:underline">
             Welcome
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
