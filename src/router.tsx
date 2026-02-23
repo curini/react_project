@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import Welcome from "./pages/Welcome";
+import Welcome from "./pages/Welcome/Welcome";
 import App from "./App";
 import Index from "./pages/Index";
 
