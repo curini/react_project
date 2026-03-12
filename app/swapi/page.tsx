@@ -1,13 +1,12 @@
-import Button from "./_component/button";
+import Button from "@/app/swapi/_component/button";
+import Title from "@/app/_component/title";
 
 export default function Page() {
   const url = process.env.SWAPI_URL;
   return (
     <>
-      <h1>Swapi</h1>
-      <div>
-        <Button url={url}>Recupérer les personnages</Button>
-      </div>
+      <Title>Swapi</Title>
+      <Button url={url}>Recupérer les personnages</Button>{" "}
     </>
   );
 }
