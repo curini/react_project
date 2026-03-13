@@ -1,5 +1,10 @@
+import Link from "next/link";
+
 type bodyObject = {
   name?: string;
+  gender?: string;
+  url?: string;
+  id?: string;
 };
 
 export default function Table({
@@ -9,13 +14,20 @@ export default function Table({
   headers: (keyof bodyObject)[];
   body: Array<bodyObject>;
 }) {
-  if (body.length == 0 && headers.length == 0) {
+  if (!body || (body.length == 0 && headers.length == 0)) {
     return <p>Aucune donnée</p>;
   }
+
+  const getPeopleId = (urlWithId: string | undefined) => {
+    return urlWithId
+      ? parseInt(urlWithId.replace("https://swapi.dev/api/people/", ""))
+      : 0;
+  };
+
   return (
-    <table className="table">
+    <table className="table w-full mb-5 mt-5">
       <thead>
-        <tr>
+        <tr className="bg-black text-white">
           {headers.map((column: string, id: number) => (
             <th key={id}>{column}</th>
           ))}
@@ -23,9 +35,20 @@ export default function Table({
       </thead>
       <tbody>
         {body.map((column: bodyObject, id: number) => (
-          <tr key={id}>
+          <tr key={id} className="text-center border">
             {headers.map((header: keyof bodyObject, key: number) => (
-              <td key={key}>{column[header]}</td>
+              <td key={key}>
+                {header == "name" && getPeopleId(column["url"]) ? (
+                  <Link
+                    className="hover:underline"
+                    href={"/swapi/people/" + getPeopleId(column["url"])}
+                  >
+                    {column[header]}
+                  </Link>
+                ) : (
+                  column[header]
+                )}
+              </td>
             ))}
           </tr>
         ))}
