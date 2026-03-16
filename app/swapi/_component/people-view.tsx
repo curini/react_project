@@ -1,6 +1,6 @@
 import Table from "./table";
 import Pagination from "./pagination";
-import People from "@/app/swapi/_api/people";
+import { getPeople } from "@/app/swapi/_api/people";
 import Button from "./button";
 
 type ResponsePeople = {
@@ -20,7 +20,7 @@ export default async function PeopleView({
 }) {
   const params = await searchParams;
   const page = params.page ? parseInt(params.page) : 1;
-  const response = await People(url, page);
+  const response = await getPeople(url, page);
   const body: ResponsePeople = await response.json();
   const people = body.results;
   const limitResult = 10;
