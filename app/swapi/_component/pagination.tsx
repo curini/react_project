@@ -14,7 +14,10 @@ export default function Pagination({
       {Array.from({ length: maxPage }).map((value, index) => {
         const realIndex = index + 1;
         return realIndex == currentPage ? (
-          <span key={index} className="border px-2 py-2">
+          <span
+            key={index}
+            className="border px-2 py-2 cursor-not-allowed bg-gray-200"
+          >
             {realIndex}
           </span>
         ) : (
