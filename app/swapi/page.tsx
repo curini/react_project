@@ -4,7 +4,7 @@ import PeopleView from "./_component/people-view";
 export default function Page({
   searchParams,
 }: {
-  searchParams: { page?: string };
+  searchParams: Promise<{ page?: string }>;
 }) {
   const url = process.env.SWAPI_URL || "https://swapi.dev/api/";
   return (
