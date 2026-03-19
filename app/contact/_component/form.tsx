@@ -21,7 +21,11 @@ export default function Form({
           <input
             type="text"
             id="message"
-            className="block border border-[#ddd]"
+            className={
+              state.error
+                ? "block border border-[#F00]"
+                : "block border border-[#ddd]"
+            }
             name="message"
           />
         </div>
