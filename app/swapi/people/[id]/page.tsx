@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { getPerson } from "../../_api/people";
-import { Person, attributeToShow, cleanProperty } from "../../_constant/person";
+import { Person } from "../../_constant/person";
+import Content from "./_content";
 
 export default async function Page({
   params,
@@ -18,24 +19,5 @@ export default async function Page({
   const response = await getPerson(url, id);
   const body: Person = await response.json();
 
-  return body.name ? (
-    <div>
-      <h1 className="text-2xl mb-4">
-        Page du personnage{" "}
-        <strong className="underline inline-block h-4 rounded">
-          {body.name}
-        </strong>
-      </h1>
-      <ul>
-        {attributeToShow.map((value: keyof Person) => (
-          <li className="mt-2" key={value}>
-            <strong>{cleanProperty(value)}:</strong>
-            <span className="inline-block h-4 rounded">{body[value]}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  ) : (
-    <div>Pas de donnée</div>
-  );
+  return <Content body={body} />;
 }
