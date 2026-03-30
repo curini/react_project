@@ -1,0 +1,21 @@
+name: Deploy and run tests
+on:
+  push:
+    branches:
+      - main
+      - develop
+    paths-ignore:
+      - "public/**"
+env:
+  SWAPI_URL: "https://swapi.dev/api/"
+jobs:
+  cypress-component-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Cypress Component run
+        uses: cypress-io/github-action@v7
+        with:
+          component: true
